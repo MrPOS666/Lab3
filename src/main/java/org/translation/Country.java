@@ -1,5 +1,9 @@
 package org.translation;
 
+/**
+ * This Class stores information about a country.
+ * name, alpha2code, alhpa3code, numericCode
+ */
 public class Country {
     private final String name;
     private final String alpha2code;
@@ -13,22 +17,28 @@ public class Country {
         this.numericCode = numericCode;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public String getAlpha2code() {
+    public final String getAlpha2code() {
         return alpha2code;
     }
 
-    public String getAlpha3code() {
+    public final String getAlpha3code() {
         return alpha3code;
     }
 
-    public int getNumericCode() {
+    public final int getNumericCode() {
         return numericCode;
     }
-    public String toString() {
-        return "Country [name=" + name + ", alpha2code=" + alpha2code + ", alpha3code=" + alpha3code + ", numericCode=" + numericCode + "]";
+
+    /**
+     * ToString return the string: Country [name= ***, alpha2code=***, alhpa3code=***, numericCode=***].
+     * @return Country [name= ***, alpha2code=***, alhpa3code=***, numericCode=***]
+     */
+    public final String toString() {
+        return "Country [name=" + name + ", alpha2code=" + alpha2code
+                + ", alpha3code=" + alpha3code + ", numericCode=" + numericCode + "]";
     }
 }
