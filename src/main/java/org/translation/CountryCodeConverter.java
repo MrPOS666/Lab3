@@ -14,7 +14,10 @@ import java.util.Map;
  */
 public class CountryCodeConverter {
 
+    public static final int PARTSLENGTH = 4;
+    public static final int LASTDIGIT = 3;
     private List<Country> countries;
+
     /**
      * Default constructor which will load the country codes from "country-codes.txt"
      * in the resources folder.
@@ -36,11 +39,11 @@ public class CountryCodeConverter {
             countries = new ArrayList<>();
             for (String line : lines.subList(1, lines.size())) {
                 String[] parts = line.split("\t");
-                if(parts.length == 4) {
+                if (parts.length == PARTSLENGTH) {
                     String name = parts[0];
                     String alpha2Code = parts[1];
                     String alpha3Code = parts[2];
-                    int numericCode = Integer.parseInt(parts[3]);
+                    int numericCode = Integer.parseInt(parts[LASTDIGIT]);
                     Country country = new Country(name, alpha2Code, alpha3Code, numericCode);
                     countries.add(country);
                 }
@@ -89,6 +92,10 @@ public class CountryCodeConverter {
         return countries.size();
     }
 
+    /**
+     * Test constructor and from CountryCode.
+     * @param args command line arguments passed to the program
+     */
     public static void main(String[] args) {
         CountryCodeConverter countryCodeConverter = new CountryCodeConverter();
         System.out.println(countryCodeConverter.fromCountryCode("usa"));
