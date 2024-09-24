@@ -5,13 +5,19 @@ package org.translation;
  * name, alpha2code, alhpa3code, numericCode
  */
 public class Country {
-    private final String name;
+    private String name = "";
     private final String alpha2code;
     private final String alpha3code;
     private final int numericCode;
 
     public Country(String name, String alpha2code, String alpha3code, int numericCode) {
         this.name = name;
+        this.alpha2code = alpha2code;
+        this.alpha3code = alpha3code;
+        this.numericCode = numericCode;
+    }
+
+    public Country(String alpha2code, String alpha3code, int numericCode) {
         this.alpha2code = alpha2code;
         this.alpha3code = alpha3code;
         this.numericCode = numericCode;
