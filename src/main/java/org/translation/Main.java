@@ -1,5 +1,6 @@
 package org.translation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -63,11 +64,14 @@ public class Main {
     private static String promptForCountry(Translator translator) {
         List<String> countries = translator.getCountries();
         CountryCodeConverter countryConverter = new CountryCodeConverter();
-        Collections.sort(countries);
+        List<String> countryName = new ArrayList<>();
         for (String country : countries) {
-            System.out.println(countryConverter.fromCountryCode(country));
+            countryName.add(countryConverter.fromCountryCode(country));
         }
-
+        Collections.sort(countryName);
+        for (String country : countryName) {
+            System.out.println(country);
+        }
         System.out.println("select a country from above:");
 
         Scanner s = new Scanner(System.in);
@@ -79,11 +83,14 @@ public class Main {
     private static String promptForLanguage(Translator translator, String country) {
         List<String> languages = translator.getCountryLanguages(country);
         LanguageCodeConverter languageConverter = new LanguageCodeConverter();
-        Collections.sort(languages);
+        List<String> languageName = new ArrayList<>();
         for (String language : languages) {
-            System.out.println(languageConverter.fromLanguageCode(language));
+            languageName.add(languageConverter.fromLanguageCode(language));
         }
-
+        Collections.sort(languageName);
+        for (String language : languageName) {
+            System.out.println(language);
+        }
         System.out.println("select a language from above:");
 
         Scanner s = new Scanner(System.in);
