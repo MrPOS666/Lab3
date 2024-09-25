@@ -39,3 +39,6 @@ target/
 *.rej
 *.sublime-project
 *.sublime-workspace
+
+# Compiled File
+/target/
