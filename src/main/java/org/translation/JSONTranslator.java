@@ -60,6 +60,7 @@ public class JSONTranslator implements Translator {
 
     @Override
     public List<String> getCountryLanguages(String country) {
+        // return an appropriate list of language codes.
         Map<String, Object> countryTranslation = countriesTranslation.get(country);
         if (countryTranslation == null) {
             throw new RuntimeException("Country not found: " + country);
@@ -70,6 +71,7 @@ public class JSONTranslator implements Translator {
 
     @Override
     public List<String> getCountries() {
+        // return an appropriate list of country codes.
         return new ArrayList<>(countriesTranslation.keySet());
     }
 
