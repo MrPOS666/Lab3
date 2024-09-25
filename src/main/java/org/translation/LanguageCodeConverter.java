@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class LanguageCodeConverter {
 
-    // TODO Task: pick appropriate instance variables to store the data necessary for this class
+    private final Map<String, String> languages;
 
     /**
      * Default constructor which will load the language codes from "language-codes.txt"
@@ -29,16 +29,21 @@ public class LanguageCodeConverter {
      * @throws RuntimeException if the resource file can't be loaded properly
      */
     public LanguageCodeConverter(String filename) {
-
+        languages = new HashMap<>() {
+        };
         try {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
-
-            // TODO Task: use lines to populate the instance variable
-            //           tip: you might find it convenient to create an iterator using lines.iterator()
-
-        // TODO Checkstyle: '}' on next line should be alone on a line.
-        } catch (IOException | URISyntaxException ex) {
+            for (String line : lines) {
+                String[] parts = line.split("\t");
+                if (parts.length == 2) {
+                    String language = parts[0];
+                    String code = parts[1];
+                    languages.put(code, language);
+                }
+            }
+        }
+        catch (IOException | URISyntaxException ex) {
             throw new RuntimeException(ex);
         }
 
@@ -50,8 +55,7 @@ public class LanguageCodeConverter {
      * @return the name of the language corresponding to the code
      */
     public String fromLanguageCode(String code) {
-        // TODO Task: update this code to use your instance variable to return the correct value
-        return code;
+        return languages.getOrDefault(code, "Unknown code");
     }
 
     /**
@@ -60,8 +64,12 @@ public class LanguageCodeConverter {
      * @return the 2-letter code of the language
      */
     public String fromLanguage(String language) {
-        // TODO Task: update this code to use your instance variable to return the correct value
-        return language;
+        for (var entry : languages.entrySet()) {
+            if (entry.getValue().equalsIgnoreCase(language)) {
+                return entry.getKey();
+            }
+        }
+        return "Unknown language";
     }
 
     /**
@@ -69,7 +77,6 @@ public class LanguageCodeConverter {
      * @return how many languages are included in this code converter.
      */
     public int getNumLanguages() {
-        // TODO Task: update this code to use your instance variable to return the correct value
-        return 0;
+        return languages.size();
     }
 }
