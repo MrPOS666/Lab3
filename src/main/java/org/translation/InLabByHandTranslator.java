@@ -1,7 +1,9 @@
 package org.translation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * An implementation of the Translator interface which translates
@@ -9,6 +11,7 @@ import java.util.List;
  */
 public class InLabByHandTranslator implements Translator {
     public static final String CANADA = "can";
+
     /**
      * Returns the language abbreviations for all languages whose translations are
      * available for the given country.
@@ -16,9 +19,10 @@ public class InLabByHandTranslator implements Translator {
      * @param country the country
      * @return list of language abbreviations which are available for this country
      */
+
     @Override
     public List<String> getCountryLanguages(String country) {
-        if ("can".equals(country)) {
+        if (CANADA.equals(country)) {
             return new ArrayList<>(List.of("de", "en", "zh", "es", "fr"));
         }
         return new ArrayList<>();
@@ -32,7 +36,7 @@ public class InLabByHandTranslator implements Translator {
      */
     @Override
     public List<String> getCountries() {
-        return new ArrayList<>(List.of("can"));
+        return new ArrayList<>(List.of(CANADA));
     }
 
     /**
@@ -44,24 +48,15 @@ public class InLabByHandTranslator implements Translator {
      */
     @Override
     public String translate(String country, String language) {
-        if (!country.equals("can")) {
+        if (!CANADA.equals(country)) {
             return null;
         }
-        if (language.equals("de")) {
-            return "Kanada";
-        }
-        else if (language.equals("en")) {
-            return "Canada";
-        }
-        else if ("zh".equals(language)) {
-            return "加拿大";
-        }else if ("es".equals(language)) {
-            return "Canadá";
-        }else if ("fr".equals(language)) {
-            return "Canada";
-        }
-        else {
-            return null;
-        }
+        Map<String, String> translations = new HashMap<>();
+        translations.put("de", "Kanada");
+        translations.put("en", "Canada");
+        translations.put("zh", "加拿大");
+        translations.put("es", "Canadá");
+        translations.put("fr", "Canada");
+        return translations.getOrDefault(language, "Translation not available");
     }
 }
