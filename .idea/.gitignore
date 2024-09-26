@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default ignored files
 /shelf/
 /workspace.xml
@@ -6,3 +7,49 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+=======
+# Ignore target directory (Maven/Gradle build output)
+target/
+
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
+*.xml
+
+# Ignore IntelliJ specific config files
+*.iws
+
+# Ignore compiled Java class files
+*.class
+
+# Ignore Maven wrapper files
+.mvn/
+!**/mvnw*
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# OS-specific files (macOS)
+.DS_Store
+
+# Eclipse project files (if applicable)
+.project
+.classpath
+.settings/
+
+# Miscellaneous
+*.diff
+*.orig
+*.rej
+*.sublime-project
+*.sublime-workspace
+
+# Compiled File
+/target/
+>>>>>>> refs/remotes/origin/main
